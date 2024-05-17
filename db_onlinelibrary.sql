@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2020 at 05:08 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.39
+-- Generation Time: May 17, 2024 at 03:28 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,14 +33,14 @@ CREATE TABLE `tblautonumbers` (
   `AUTOEND` int(11) NOT NULL,
   `AUTOINC` int(11) NOT NULL,
   `AUTOKEY` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblautonumbers`
 --
 
 INSERT INTO `tblautonumbers` (`AUTOID`, `AUTOSTART`, `AUTOEND`, `AUTOINC`, `AUTOKEY`) VALUES
-(1, '000', 17, 1, 'BorrowerID');
+(1, '000', 18, 1, 'BorrowerID');
 
 -- --------------------------------------------------------
 
@@ -57,7 +56,7 @@ CREATE TABLE `tblbooknumber` (
   `Author` varchar(90) NOT NULL,
   `PublishDate` date NOT NULL,
   `Publisher` varchar(90) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblbooknumber`
@@ -100,33 +99,42 @@ CREATE TABLE `tblbooks` (
   `OverAllQty` int(11) NOT NULL,
   `Donate` tinyint(1) NOT NULL,
   `Remarks` varchar(90) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblbooks`
 --
 
 INSERT INTO `tblbooks` (`BookID`, `IBSN`, `BookTitle`, `BookDesc`, `Author`, `PublishDate`, `BookPublisher`, `Category`, `BookPrice`, `BookQuantity`, `Status`, `BookType`, `DeweyDecimal`, `OverAllQty`, `Donate`, `Remarks`) VALUES
-(1, '12345678', 'life of juan', 'life of jose and maria', 'unknown', '2016-10-10', 'unknown', 'History and Geography', 175, 1, 'Not Available', 'Fiction', '900', 1, 0, 'Donate'),
-(2, '12345671', 'the computerizez system', 'computer', 'unknown', '2016-10-10', 'unknown', 'Technology', 200, 1, 'Not Available', 'Fiction', '600', 1, 0, 'Donate'),
-(3, '12345672', 'languages', 'language', 'unknown', '0000-00-00', 'unknown', 'Language', 180, 1, 'Not Available', 'Non-Fiction', '400', 1, 0, 'Purchased'),
-(4, '12345673', 'Living Things', 'invention of science', 'unknown', '2016-10-10', 'unknown', 'Science', 185, 1, 'Not Available', 'Non-Fiction', '500', 1, 0, 'Purchased'),
-(6, '1345673', 'life of juan', 'life of juan', 'unknown', '2016-10-10', 'unknown', 'History and Geography', 185, 1, 'Not Available', 'Fiction', '900', 1, 0, 'Purchased'),
-(7, '14256372', 'Mother Nature', 'invention of science', 'unknown', '2016-10-10', 'unknown', 'Science', 185, 1, 'Not Available', 'Fiction', '500', 1, 0, 'Purchased'),
-(8, '15243678', 'book', 'book revised', 'unknown', '2016-10-10', 'unknown', 'Technology', 109, 1, 'Available', 'Fiction', '600', 1, 0, 'Purchased'),
-(9, '15263712', 'language of us', 'language', 'unknown', '2016-10-10', 'unknown', 'Language', 100, 1, 'Available', 'Fiction', '400', 1, 0, 'Donate'),
-(10, '19872634', 'book', 'book revised', 'unknown', '2016-10-10', 'unknown', 'Technology', 190, 1, 'Available', 'Fiction', '600', 1, 0, 'Purchased'),
-(11, '18293746', 'the only book', 'book', 'unknown', '2016-10-10', 'uknown', 'Arts and Recreation', 120, 1, 'Available', 'Unknown', '700', 1, 0, 'Donate'),
-(12, '11726354', 'book  now', 'book', 'unknown', '2016-10-10', 'unknown', 'Arts and Recreation', 150, 1, 'Not Available', 'Unknown', '700', 1, 0, 'Purchased'),
-(13, '10928273', 'the one', 'book1', 'unknown', '2016-10-10', 'unknown', 'Social Science', 210, 1, 'Available', 'Unknown', '300', 1, 0, 'Purchased'),
-(14, '10987654', 'book', 'book3', 'unknown', '2016-10-16', 'unknown', 'Technology', 125, 1, 'Available', 'Unknown', '600', 1, 0, 'Purchased'),
-(15, '98172634', 'the life of june', 'journey', 'unknown', '2016-10-10', 'unknown', 'Science', 100, 1, 'Available', 'Fiction', '500', 1, 0, 'Donate'),
-(16, '19282736', 'the life of june', 'journey', 'unknown', '2016-10-16', 'unknown', 'Science', 100, 1, 'Available', 'Non-Fiction', '500', 1, 0, 'Purchased'),
-(17, '9812345', 'book', 'one', 'unkwon', '2016-11-14', 'unkown', 'Language', 90, 1, 'Available', 'Fiction', '400', 1, 0, 'Purchased'),
-(18, '12345670', 'the computerizez system', 'computer', 'un', '2016-10-10', 'unknown', 'Computers, Information and General Reference', 200, 1, 'Available', 'Fiction', '000', 1, 0, 'Purchased'),
-(19, '12345677', 'life of juan', 'life of juan and jose', 'unknown', '2016-10-10', 'unknown', 'History and Geography', 900, 1, 'Available', 'Fiction', '900', 1, 0, 'Donate'),
-(21, '9876547', 'title', 'book', 'unknown', '2016-10-10', 'unknown', 'Technology', 370, 1, 'Available', 'Fiction', '600', 1, 0, 'Purchased'),
-(23, '117263548', 'book  now', 'book one', 'unknown', '0000-00-00', 'unknown', 'ALL', 23, 1, 'Available', '', '', 1, 0, 'Purchased');
+(1, '12345678', 'The History and Geography of Human Genes', 'Hailed as a breakthrough in the understanding of human evolution', 'Luigi Luca Cavalli-Sforza ,  Paolo Menozzi ,  Alberto Piazza  ', '1996-08-05', 'Princeton University Press', 'History and Geography', 175, 1, 'Not Available', 'Fiction', '900', 1, 0, 'Donate'),
+(2, '12345671', 'Blockchain Revolution', 'How the Technology Behind Bitcoin Is Changing Money, Business, and the World', 'Don Tapscott ,  Alex Tapscott', '2016-05-07', ' Portfolio', 'Technology', 200, 1, 'Available', 'Fiction', '600', 1, 0, 'Donate'),
+(3, '12345672', 'Wren & Martin', 'Wren and Martin s High School English Grammar & Composition is one of the most popular and widely used reference books on English Grammar.', 'H. Martin and P. C. Wren', '0000-00-00', 'unknown', 'Language', 180, 1, 'Not Available', 'Non-Fiction', '400', 1, 0, 'Purchased'),
+(4, '12345673', 'The Selfish Gene', '\"The Selfish Gene\" caused a wave of excitement among biologists and the general public when it was first published in 1976.', 'Richard Dawkins', '1976-01-01', 'Oxford University Pres', 'Science', 385, 1, 'Not Available', 'Non-Fiction', '500', 1, 0, 'Purchased'),
+(6, '1345673', 'The Vedic People', 'Their History and Geography', 'Rajesh Kochhar', '2000-01-01', 'Orient Longman', 'History and Geography', 185, 1, 'Available', 'Fiction', '900', 1, 0, 'Purchased'),
+(7, '14256372', 'Sapiens', 'A Brief History of Humankind', 'Yuval Noah Harari', '2015-01-01', ' Vintage', 'Science', 185, 1, 'Not Available', 'Fiction', '500', 1, 0, 'Purchased'),
+(8, '15243678', 'Designing Agentive Technology', 'AI That Works for People', 'Christopher Noessel', '2017-05-01', 'Rosenfeld Media', 'Technology', 109, 1, 'Not Available', 'Fiction', '600', 1, 0, 'Purchased'),
+(9, '15263712', 'The Elements of Style', 'This style manual offers practical advice on improving writing skills.', 'William Strunk Jr. ,  E.B. White', '1999-08-24', 'Allyn & Bacon', 'Language', 100, 1, 'Available', 'Fiction', '400', 1, 0, 'Donate'),
+(10, '19872634', 'The Google Story', 'Inside the Hottest Business, Media and Technology Success of Our Time', 'David A. Vise ,  Mark Malseed', '2006-08-29', ' Delta', 'Technology', 190, 1, 'Not Available', 'Fiction', '600', 1, 0, 'Purchased'),
+(11, '18293746', 'The Death of the Artist', 'How Creators Are Struggling to Survive in the Age of Billionaires and Big Tech', 'William Deresiewicz', '2020-07-20', ' Henry Holt and Co.', 'Arts and Recreation', 120, 1, 'Available', 'Unknown', '700', 1, 0, 'Donate'),
+(12, '11726354', 'Beyond Belief: Finding the Strength to Come Back', 'BEYOND BELIEF details the events that led up to the derailment', 'Josh Hamilton ,  Tim Keown', '2018-10-13', 'FaithWords', 'Arts and Recreation', 150, 1, 'Not Available', 'Unknown', '700', 1, 0, 'Purchased'),
+(13, '10928273', 'On Being a Therapist', 'This thoroughly revised edition includes discussion about how the business and practice of therapy has changed in recent years', 'Jeffrey A. Kottler', '2003-09-29', 'Jossey-Bass', 'Social Science', 210, 1, 'Available', 'Unknown', '300', 1, 0, 'Purchased'),
+(14, '10987654', 'Rise of the Robots', 'Technology and the Threat of a Jobless Future', 'Martin Ford', '2015-05-05', 'Basic Books', 'Technology', 225, 1, 'Not Available', 'Unknown', '600', 1, 0, 'Purchased'),
+(15, '98172634', 'The Origin of Species', 'Darwin\'s theory of natural selection issued a profound challenge to orthodox thought and belief', 'Charles Darwin', '2004-01-01', 'Castle', 'Science', 200, 1, 'Not Available', 'Fiction', '500', 1, 0, 'Donate'),
+(16, '19282736', 'Cosmos', 'The story of fifteen billion years of cosmic evolution transforming matter and life into consciousness.', 'Carl Sagan', '2002-05-07', 'Random House', 'Science', 100, 1, 'Not Available', 'Non-Fiction', '500', 1, 0, 'Purchased'),
+(17, '9812345', 'The Language Instinct', 'How the Mind Creates Language.', 'Steven Pinker', '2000-11-07', 'Harper Perennial Modern Classics', 'Language', 190, 1, 'Not Available', 'Fiction', '400', 1, 0, 'Purchased'),
+(18, '12345670', 'Computer Security Sourcebook', 'Basic Information for General Readers About Computer, Internet and E-Mail Security', 'Wilma R. Caldwell', '2003-06-01', 'Omnigraphics Inc', 'Computers, Information and General Reference', 200, 1, 'Available', 'Fiction', '000', 1, 0, 'Purchased'),
+(19, '12345677', 'Against Their Will', 'The History and Geography of Forced Migrations in the USSR', 'Pavel Polian', '2003-10-16', 'Central European University Press', 'History and Geography', 900, 1, 'Not Available', 'Fiction', '900', 1, 0, 'Donate'),
+(21, '9876547', 'Chip War', 'The Fight for the World\'s Most Critical Technology', 'Chris Miller', '2022-08-04', ' Scribner', 'Technology', 370, 1, 'Not Available', 'Fiction', '600', 1, 0, 'Purchased'),
+(23, '117263548', 'Dune', 'Dune is the story of the boy Paul Atreides', 'Frank Herbert', '2019-10-01', 'Ace', 'ALL', 230, 1, 'Available', '', 'ALL', 1, 0, 'Purchased'),
+(24, '21651622656', 'To Kill a Mockingbird', 'The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it.', 'Harper Lee', '2006-05-06', 'Harper Perennial Modern Classics', 'Literature', 250, 1, 'Not Available', '', '800', 1, 0, 'purchased'),
+(25, '9780199923113', 'The Good Life', 'Unifying the Philosophy and Psychology of Well-Being', 'Michael A. Bishop', '2015-01-02', 'Oxford University Press', 'Philosophy and Psychology', 250, 1, 'Available', '', '100', 1, 0, 'purchased'),
+(26, '9780241144770', 'Religion for Atheists', 'A Non-Believer\'s Guide to the Uses of Religion', 'Alain de Botton', '2011-09-01', ' Hamish Hamilton', 'Religion', 100, 1, 'Available', '', '200', 1, 0, 'purchased'),
+(27, '9780439023481', 'The Hunger Games', 'Could you survive on your own in the wild, with every one out to make sure you don\'t live to see the morning?', 'Suzanne Collins', '2008-10-14', 'Scholastic Press', 'ALL', 150, 1, 'Not Available', '', 'ALL', 1, 0, 'purchased'),
+(28, '2319846516', 'The Handmaid’s Tale', 'Funny, unexpected, horrifying, and altogether convincing, The Handmaid\'s Tale is at once scathing satire, dire warning, and tour de force.', 'Margaret Atwood', '1998-04-01', 'Anchor Books', 'Literature', 250, 1, 'Available', '', '800', 1, 0, 'purchased'),
+(29, '9788130933658', 'Objective Computer Science & Information Technology', 'Classroom–tested lessons include brief reading selections followed by constructed response and multiple–choice questions and thinking and writing activities.', 'Jushta Jaiswal', '2015-01-01', '', 'Computers, Information and General Reference', 350, 1, 'Not Available', '', '000', 1, 0, 'purchased'),
+(30, '9780140449235', 'Beyond Good and Evil', 'Friedrich Nietzsche\'s Beyond Good and Evil is translated from the German by R.J. Hollingdale with an introduction by Michael Tanner in Penguin Classics.', 'Friedrich Nietzsche ,  Michael Tanner  ,  R.J. Hollingdale', '0000-00-00', '', 'Philosophy and Psychology', 120, 1, 'Not Available', '', '100', 1, 0, 'purchased'),
+(31, '9780670034727', 'Breaking the Spell', 'Religion as a Natural Phenomenon', 'Daniel C. Dennett', '2006-02-06', 'Viking Adult', 'Religion', 100, 1, 'Not Available', '', '200', 1, 0, 'donated'),
+(32, '9780521777445', 'Explaining Social Behavior', ' More Nuts and Bolts for the Social Sciences', 'Jon Elster', '2007-04-07', 'Cambridge University Press', 'Social Science', 110, 1, 'Not Available', '', '300', 1, 0, 'purchased');
 
 -- --------------------------------------------------------
 
@@ -149,25 +157,26 @@ CREATE TABLE `tblborrower` (
   `Stats` varchar(36) NOT NULL,
   `BUsername` varchar(90) NOT NULL,
   `BPassword` varchar(90) NOT NULL,
- `fine` varchar(90) NULL,
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fine` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblborrower`
 --
 
-INSERT INTO `tblborrower` (`IDNO`, `BorrowerId`, `Firstname`, `Lastname`, `MiddleName`, `Address`, `Sex`, `ContactNo`, `CourseYear`, `BorrowerPhoto`, `BorrowerType`, `Stats`, `BUsername`, `BPassword`) VALUES
-(1, '119', 'jom', 'lozada', 'baron', 'ilog', 'Female', '0920', 'BEED', 'photos/02052020123045077db70b-ab84-46c4-bbaa-a5dd6b7332a4_200x200.png', 'Students', 'Active', 'jom', ''),
-(2, '213', 'Janno', 'Palacios', 'E', 'kabankalan City', 'Male', '0192836383', 'BSIT-2', 'Chrysanthemum.jpg', 'Student', 'Active', '', ''),
-(3, '912', 'lou', 'gotera', 'velez', 'rizal', 'Female', '0930', 'BSIT', 'bhl-logo.jpg', 'Student', 'Active', '', ''),
-(4, '921', 'joma', 'baron', 'lozada', 'dancalan', 'Female', '0921', '', 'Desert.jpg', 'Student', '', '', ''),
-(5, '1234', 'ambot', 'sure', 'guess', 'unknown', 'Male', '0907', 'ELECTRONICS', 'Koala.jpg', 'Student', 'NotActive', '', ''),
-(6, '4321', 'John Craig', 'Nillos', 'Palacios', 'Dancalan Ilog', 'Male', '1233213123', 'BSIT-1', 'Wonderful-Room-King.jpg', 'Student', 'Active', '', ''),
-(7, '9213', 'lou', 'velez', 'gotera', 'rizal', 'Female', '0930', 'BSIT', 'Lighthouse.jpg', 'Student', 'NotActive', '', ''),
-(8, '54321', 'virgel', 'tem', 'brevilla', 'unknown', 'Female', '0930', 'BEED', 'ARIEL 6.jpg', 'Student', 'Active', '', ''),
-(9, '123432', 'Mark', 'Palacios', 'E', 'Galicia Ilog', 'Male', '09291918272', 'HRM-1', 'Chrysanthemum.jpg', 'Student', 'Active', '', ''),
-(22, '202000015', 'sad', 'sad', 'sad', 'asd', 'Female', 'asd', '213', 'photos/', 'Students', 'Active', 'asd', 'f10e2821bbbea527ea02200352313bc059445190'),
-(23, '202000016', 'Jean', 'Sy', 'Ong', 'Philippines', 'Female', '0923564521', 'AB-English', 'photos/04052020042948110218.jpg', 'Students', 'Active', 'Jean', '8c34f90c4d920b3126a0a0bf4aecf2a820fce8a7');
+INSERT INTO `tblborrower` (`IDNO`, `BorrowerId`, `Firstname`, `Lastname`, `MiddleName`, `Address`, `Sex`, `ContactNo`, `CourseYear`, `BorrowerPhoto`, `BorrowerType`, `Stats`, `BUsername`, `BPassword`, `fine`) VALUES
+(1, '119', 'jom', 'lozada', 'baron', 'ilog', 'Female', '0920', 'BEED', 'photos/02052020123045077db70b-ab84-46c4-bbaa-a5dd6b7332a4_200x200.png', 'Students', 'Active', 'jom', '', NULL),
+(2, '213', 'Janno', 'Palacios', 'E', 'kabankalan City', 'Male', '0192836383', 'BSIT-2', 'Chrysanthemum.jpg', 'Student', 'Active', '', '', NULL),
+(3, '912', 'lou', 'gotera', 'velez', 'rizal', 'Female', '0930', 'BSIT', 'bhl-logo.jpg', 'Student', 'Active', '', '', NULL),
+(4, '921', 'joma', 'baron', 'lozada', 'dancalan', 'Female', '0921', '', 'Desert.jpg', 'Student', '', '', '', NULL),
+(5, '1234', 'ambot', 'sure', 'guess', 'unknown', 'Male', '0907', 'ELECTRONICS', 'Koala.jpg', 'Student', 'NotActive', '', '', NULL),
+(6, '4321', 'John Craig', 'Nillos', 'Palacios', 'Dancalan Ilog', 'Male', '1233213123', 'BSIT-1', 'Wonderful-Room-King.jpg', 'Student', 'Active', '', '', NULL),
+(7, '9213', 'lou', 'velez', 'gotera', 'rizal', 'Female', '0930', 'BSIT', 'Lighthouse.jpg', 'Student', 'NotActive', '', '', NULL),
+(8, '54321', 'virgel', 'tem', 'brevilla', 'unknown', 'Female', '0930', 'BEED', 'ARIEL 6.jpg', 'Student', 'Active', '', '', NULL),
+(9, '123432', 'Mark', 'Palacios', 'E', 'Galicia Ilog', 'Male', '09291918272', 'HRM-1', 'Chrysanthemum.jpg', 'Student', 'Active', '', '', NULL),
+(22, '202000015', 'sad', 'sad', 'sad', 'asd', 'Female', 'asd', '213', 'photos/', 'Students', 'Active', 'asd', 'f10e2821bbbea527ea02200352313bc059445190', NULL),
+(23, '202000016', 'Jean', 'Sy', 'Ong', 'Philippines', 'Female', '0923564521', 'AB-English', 'photos/04052020042948110218.jpg', 'Students', 'Active', 'Jean', '8c34f90c4d920b3126a0a0bf4aecf2a820fce8a7', NULL),
+(24, '202300017', 'pratham', 'bagri', 'code', 'absh', 'Male', '1234569', 'bca', 'photos/21112023085505yuji-itadori-3840x2160-9284.jpg', 'Students', 'Active', 'pratham', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', NULL);
 
 -- --------------------------------------------------------
 
@@ -179,7 +188,7 @@ CREATE TABLE `tblcategory` (
   `CategoryId` int(11) NOT NULL,
   `Category` varchar(125) NOT NULL,
   `DDecimal` varchar(90) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblcategory`
@@ -209,7 +218,7 @@ CREATE TABLE `tbllogs` (
   `UserId` int(11) NOT NULL,
   `LogDate` datetime NOT NULL,
   `LogMode` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbllogs`
@@ -713,7 +722,7 @@ CREATE TABLE `tblpayment` (
   `DatePayed` date NOT NULL,
   `BorrowerId` int(11) NOT NULL,
   `Remarks` varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblpayment`
@@ -747,7 +756,7 @@ CREATE TABLE `tbltransaction` (
   `Returned` tinyint(1) NOT NULL,
   `DateReturned` datetime NOT NULL,
   `Remarks` varchar(90) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbltransaction`
@@ -788,13 +797,56 @@ INSERT INTO `tbltransaction` (`TransactionID`, `IBSN`, `NoCopies`, `DateBorrowed
 (32, '12345671', 1, '2020-05-03 08:41:00', '1 week', 'Returned', '2020-05-10 08:41:00', 123432, 0, 0, 1, '2020-05-03 00:00:00', 'Ontime'),
 (35, '12345678', 1, '2020-05-03 10:34:00', '1 week', 'Returned', '2020-05-10 10:34:00', 213, 0, 0, 1, '2020-05-03 10:34:00', 'Ontime'),
 (36, '12345678', 1, '2020-05-03 11:07:00', '1 week', 'Confirmed', '2020-05-10 11:07:00', 213, 1, 0, 0, '2020-05-10 00:00:00', 'Borrowed for on Week'),
-(37, '12345671', 1, '2020-05-03 01:17:00', '1 week', 'Confirmed', '2020-05-10 01:17:00', 213, 1, 0, 0, '2020-05-10 00:00:00', 'Borrowed for on Week'),
-(38, '1345673', 1, '2020-05-03 01:18:00', '1 week', 'Confirmed', '2020-05-10 01:18:00', 4321, 1, 0, 0, '2020-05-10 00:00:00', 'Borrowed for on Week'),
+(37, '12345671', 1, '2020-05-03 01:17:00', '1 week', 'Returned', '2020-05-10 01:17:00', 213, 0, 1, 1, '2023-12-02 11:06:00', 'Over Due'),
+(38, '1345673', 1, '2020-05-03 01:18:00', '1 week', 'Returned', '2020-05-10 01:18:00', 4321, 0, 1, 1, '2023-11-21 09:05:00', 'Over Due'),
 (39, '12345670', 1, '2020-05-04 01:31:00', '1 week', 'Cancelled', '2020-05-11 01:31:00', 20200003, 0, 0, 0, '2020-05-11 00:00:00', 'Cancelled'),
 (42, '12345672', 1, '2020-05-04 00:00:00', '1 week', 'Confirmed', '2020-05-11 01:37:00', 20200003, 1, 0, 0, '2020-05-11 00:00:00', 'Borrowed for on Week'),
 (43, '12345673', 1, '2020-05-04 00:00:00', '1 week', 'Confirmed', '2020-05-11 01:38:00', 20200003, 1, 0, 0, '2020-05-11 00:00:00', 'Borrowed for on Week'),
 (44, '14256372', 1, '2020-05-04 04:28:00', '1 week', 'Pending', '2020-05-11 04:28:00', 202000015, 1, 0, 0, '2020-05-11 00:00:00', 'Borrowed for on Week'),
-(45, '11726354', 1, '2020-05-04 04:29:00', '1 week', 'Pending', '2020-05-11 04:29:00', 202000016, 1, 0, 0, '2020-05-11 00:00:00', 'Borrowed for on Week');
+(45, '11726354', 1, '2023-11-21 00:00:00', '1 week', 'Returned', '2020-05-11 04:29:00', 202000016, 0, 1, 1, '2023-12-02 08:03:00', 'Over Due'),
+(46, '9780241144770', 1, '2023-11-21 08:55:00', '1 week', 'Cancelled', '2023-11-28 08:55:00', 202300017, 0, 0, 0, '2023-11-28 00:00:00', 'Cancelled'),
+(47, '11726354', 1, '2023-11-21 00:00:00', '1 week', 'Returned', '2023-11-28 09:00:00', 202300017, 0, 0, 1, '2023-11-21 09:06:00', 'Ontime'),
+(48, '12345677', 1, '2023-11-21 00:00:00', '1 week', 'Returned', '2023-11-28 09:04:00', 202300017, 0, 1, 1, '2023-12-02 11:16:00', 'Over Due'),
+(49, '12345677', 1, '2023-11-22 00:00:00', '1 week', 'Returned', '2023-11-29 07:56:00', 202300017, 0, 0, 1, '2023-11-22 07:57:00', 'Ontime'),
+(50, '12345671', 1, '2023-11-27 00:00:00', '1 week', 'Returned', '2023-12-04 08:20:00', 202300017, 0, 0, 1, '2023-12-02 11:13:00', 'Ontime'),
+(51, '12345677', 1, '2023-11-27 00:00:00', '1 week', 'Cancelled', '2023-12-04 09:35:00', 202300017, 0, 0, 0, '2023-12-04 00:00:00', 'Cancelled'),
+(52, '10987654', 1, '2023-11-27 00:00:00', '1 week', 'Returned', '2023-12-04 09:37:00', 202300017, 0, 0, 1, '2023-12-02 08:02:00', 'Ontime'),
+(53, '18293746', 1, '2023-11-27 00:00:00', '1 week', 'Returned', '2023-12-04 09:38:00', 202300017, 0, 0, 1, '2023-12-02 11:02:00', 'Ontime'),
+(54, '21651622656', 1, '2023-11-27 00:00:00', '1 week', 'Cancelled', '2023-12-04 09:39:00', 202300017, 0, 0, 0, '2023-12-04 00:00:00', 'Cancelled'),
+(55, '1345673', 1, '2023-11-27 00:00:00', '1 week', 'Returned', '2023-12-04 09:40:00', 202300017, 0, 0, 1, '2023-12-02 07:59:00', 'Ontime'),
+(56, '10928273', 1, '2023-11-27 00:00:00', '1 week', 'Returned', '2023-12-04 09:40:00', 202300017, 0, 0, 1, '2023-12-02 08:02:00', 'Ontime'),
+(57, '12345677', 1, '2023-11-27 00:00:00', '1 week', 'Returned', '2023-12-04 09:44:00', 202300017, 0, 0, 1, '2023-12-02 11:15:00', 'Ontime'),
+(58, '12345677', 1, '2023-12-02 07:55:00', '1 week', 'Cancelled', '2023-12-09 07:55:00', 202300017, 0, 0, 0, '2023-12-09 00:00:00', 'Cancelled'),
+(59, '117263548', 1, '2023-12-02 08:10:00', '1 week', 'Cancelled', '2023-12-09 08:10:00', 202300017, 0, 0, 0, '2023-12-09 00:00:00', 'Cancelled'),
+(60, '10928273', 1, '2023-12-02 00:00:00', '1 week', 'Returned', '2023-12-09 08:11:00', 202300017, 0, 0, 1, '2023-12-02 10:17:00', 'Ontime'),
+(61, '19282736', 1, '2023-12-02 08:11:00', '1 week', 'Pending', '2023-12-09 08:11:00', 202300017, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(62, '15243678', 1, '2023-12-02 08:12:00', '1 week', 'Pending', '2023-12-09 08:12:00', 202300017, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(63, '10987654', 1, '2023-12-02 08:12:00', '1 week', 'Pending', '2023-12-09 08:12:00', 202300017, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(64, '12345673', 1, '2023-12-02 00:00:00', '1 week', 'Returned', '2023-12-09 10:29:00', 202300017, 0, 0, 1, '2023-12-02 10:32:00', 'Ontime'),
+(65, '12345673', 1, '2023-12-02 10:36:00', '1 week', 'Pending', '2023-12-09 10:36:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(66, '9876547', 1, '2023-12-02 10:58:00', '1 week', 'Pending', '2023-12-09 10:58:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(67, '12345670', 1, '2023-12-02 00:00:00', '1 week', 'Returned', '2023-12-09 10:59:00', 202000015, 0, 0, 1, '2023-12-02 11:12:00', 'Ontime'),
+(68, '21651622656', 1, '2023-12-02 11:00:00', '1 week', 'Pending', '2023-12-09 11:00:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(69, '11726354', 1, '2023-12-02 11:00:00', '1 week', 'Pending', '2023-12-09 11:00:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(70, '9780670034727', 1, '2023-12-02 11:01:00', '1 week', 'Pending', '2023-12-09 11:01:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(71, '12345671', 1, '2023-12-02 11:03:00', '1 week', 'Pending', '2023-12-09 11:03:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(72, '98172634', 1, '2023-12-02 11:04:00', '1 week', 'Pending', '2023-12-09 11:04:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(73, '9780140449235', 1, '2023-12-02 11:04:00', '1 week', 'Pending', '2023-12-09 11:04:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(74, '19872634', 1, '2023-12-02 11:04:00', '1 week', 'Pending', '2023-12-09 11:04:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(75, '1345673', 1, '2023-12-02 11:05:00', '1 week', 'Cancelled', '2023-12-09 11:05:00', 202000015, 0, 0, 0, '2023-12-09 00:00:00', 'Cancelled'),
+(76, '9780199923113', 1, '2023-12-02 00:00:00', '1 week', 'Returned', '2023-12-09 11:07:00', 202000015, 0, 0, 1, '2023-12-02 11:10:00', 'Ontime'),
+(77, '9780199923113', 1, '2023-12-02 11:09:00', '1 week', 'Cancelled', '2023-12-09 11:09:00', 202000015, 0, 0, 0, '2023-12-09 00:00:00', 'Cancelled'),
+(78, '9812345', 1, '2023-12-02 11:10:00', '1 week', 'Pending', '2023-12-09 11:10:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(79, '9788130933658', 1, '2023-12-02 11:11:00', '1 week', 'Pending', '2023-12-09 11:11:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(80, '12345671', 1, '2023-12-02 11:11:00', '1 week', 'Cancelled', '2023-12-09 11:11:00', 202000015, 0, 0, 0, '2023-12-09 00:00:00', 'Cancelled'),
+(81, '12345677', 1, '2023-12-02 11:12:00', '1 week', 'Pending', '2023-12-09 11:12:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(82, '9780521777445', 1, '2023-12-02 11:15:00', '1 week', 'Pending', '2023-12-09 11:15:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(83, '12345677', 1, '2023-12-02 11:17:00', '1 week', 'Pending', '2023-12-09 11:17:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(84, '1345673', 1, '2023-12-02 11:17:00', '1 week', 'Cancelled', '2023-12-09 11:17:00', 202000015, 0, 0, 0, '2023-12-09 00:00:00', 'Cancelled'),
+(85, '9780439023481', 1, '2023-12-02 00:00:00', '1 week', 'Confirmed', '2023-12-09 11:20:00', 202000015, 1, 0, 0, '2023-12-09 00:00:00', 'Borrowed for on Week'),
+(86, '12345671', 1, '2023-12-04 07:43:00', '1 week', 'Pending', '2023-12-11 07:43:00', 202300017, 1, 0, 0, '2023-12-11 00:00:00', 'Borrowed for on Week'),
+(87, '12345671', 1, '2023-12-04 07:44:00', '1 week', 'Cancelled', '2023-12-11 07:44:00', 202300017, 0, 0, 0, '2023-12-11 00:00:00', 'Cancelled'),
+(88, '12345677', 1, '2024-05-17 00:00:00', '1 week', 'Confirmed', '2024-05-24 02:07:00', 202300017, 1, 0, 0, '2024-05-24 00:00:00', 'Borrowed for on Week');
 
 -- --------------------------------------------------------
 
@@ -810,35 +862,15 @@ CREATE TABLE `tblusers` (
   `TYPE` varchar(125) NOT NULL,
   `Status` varchar(11) NOT NULL,
   `PicLoc` text NOT NULL,
-  `fine` varchar(12) NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fine` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblusers`
 --
 
-INSERT INTO `tblusers` (`USERID`, `NAME`, `UEMAIL`, `PASS`, `TYPE`, `Status`, `PicLoc`) VALUES
-(3, 'Janno Palacios', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'Active', 'img/bhl-logo.jpg');
-
---
--- Table structure for table `tblrating`
---
-
-CREATE TABLE `tblratings` (
-    `BookID` int(11),
-    `user_id` int(11),
-    `rating` int(11),
-    FOREIGN KEY (BookID) REFERENCES tblbooks(BookID)
- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblratings`
---
-INSERT INTO tblratings (BookId, user_id, rating) VALUES
-(1, 1, 4), -- John rates "To Kill a Mockingbird" with 4 stars
-(2, 1, 5), -- John rates "1984" with 5 stars
-(1, 2, 3), -- Jane rates "To Kill a Mockingbird" with 3 stars
-(3, 2, 4); -- Jane rates "Pride and Prejudice" with 4 stars
+INSERT INTO `tblusers` (`USERID`, `NAME`, `UEMAIL`, `PASS`, `TYPE`, `Status`, `PicLoc`, `fine`) VALUES
+(3, 'Bhupendra Jogi', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', 'Active', 'img/bhl-logo.jpg', NULL);
 
 --
 -- Indexes for dumped tables
@@ -919,13 +951,13 @@ ALTER TABLE `tblbooknumber`
 -- AUTO_INCREMENT for table `tblbooks`
 --
 ALTER TABLE `tblbooks`
-  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tblborrower`
 --
 ALTER TABLE `tblborrower`
-  MODIFY `IDNO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `IDNO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tblcategory`
@@ -949,7 +981,7 @@ ALTER TABLE `tblpayment`
 -- AUTO_INCREMENT for table `tbltransaction`
 --
 ALTER TABLE `tbltransaction`
-  MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `TransactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tblusers`
