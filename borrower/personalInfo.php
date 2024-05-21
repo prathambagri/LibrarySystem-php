@@ -1,144 +1,151 @@
+<?php
+$mydb->setQuery("SELECT * FROM `tblbooks` b, `tbltransaction` t ,`tblborrower` s
+WHERE b.IBSN=t.IBSN AND t.BorrowerId=s.BorrowerId AND s.BorrowerId=" . $_SESSION['BorrowerId']);
+$cur = $mydb->loadResultlist();
+$totalFine = 0;
+foreach ($cur as $obj) {
+  $dateBorrowed = new DateTime($obj->DateBorrowed);
+  $dueDate = new DateTime($obj->DueDate);
+  $currentDate = new DateTime();
+  $interval = $dueDate->diff($currentDate);
+  $daysLate = $interval->days;
+  if ($currentDate > $dueDate && $daysLate >= 3 && $obj->Status == 'Pending') {
+    $fine = ($daysLate - 2) * 50;
+  } else {
+    $fine = 0;
+  }
+  $totalFine += $fine;
+}
+?>
 
 <form class="form-horizontal span6  wow fadeInDown" action="controller.php?action=edit" method="POST" enctype="multipart/form-data">
-<?php
-print_r($res)
-?>
- <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "BorrowerId">Borrower ID</label>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="BorrowerId">Borrower ID</label>
 
-              <div class="col-md-8"> 
-                  <input class="form-control input-sm" id="BorrowerId" name="BorrowerId" placeholder=
-                    "Employee No" type="text" value="<?php echo $res->BorrowerId; ?>" readonly>  
-           </div>
-            </div>
-          </div>           
-           <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "Firstname">Firstname:</label>
+      <div class="col-md-8">
+        <input class="form-control input-sm" id="BorrowerId" name="BorrowerId" placeholder="Employee No" type="text" value="<?php echo $res->BorrowerId; ?>" readonly>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="Firstname">Firstname:</label>
 
-              <div class="col-md-8"> 
-                 <input class="form-control input-sm" id="Firstname" name="Firstname" placeholder=
-                    "Firstname" type="text" value="<?php echo $res->Firstname; ?>"  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
-              </div>
-            </div>
-          </div>
+      <div class="col-md-8">
+        <input class="form-control input-sm" id="Firstname" name="Firstname" placeholder="Firstname" type="text" value="<?php echo $res->Firstname; ?>" onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+      </div>
+    </div>
+  </div>
 
-          <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "Lastname">Lastname:</label>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="Lastname">Lastname:</label>
 
-              <div class="col-md-8"> 
-                <input  class="form-control input-sm" id="Lastname" name="Lastname" placeholder=
-                    "Lastname" value="<?php echo $res->Lastname; ?>"    onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
-                </div>
-            </div>
-          </div>
+      <div class="col-md-8">
+        <input class="form-control input-sm" id="Lastname" name="Lastname" placeholder="Lastname" value="<?php echo $res->Lastname; ?>" onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+      </div>
+    </div>
+  </div>
 
-          <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "MiddleName">Middle Name:</label>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="MiddleName">Middle Name:</label>
 
-              <div class="col-md-8"> 
-                <input  class="form-control input-sm" id="MiddleName" name="MiddleName" placeholder=
-                    "Middle Name"  value="<?php echo $res->MiddleName; ?>"  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
-                 <!-- <input class="form-control input-sm" id="DEPARTMENT_DESC" name="DEPARTMENT_DESC" placeholder=
+      <div class="col-md-8">
+        <input class="form-control input-sm" id="MiddleName" name="MiddleName" placeholder="Middle Name" value="<?php echo $res->MiddleName; ?>" onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+        <!-- <input class="form-control input-sm" id="DEPARTMENT_DESC" name="DEPARTMENT_DESC" placeholder=
                     "Description" type="text" value=""> -->
-              </div>
-            </div>
-          </div> 
+      </div>
+    </div>
+  </div>
 
-         <div class="form-group">
-          <div class="row">
-            <label class="col-md-2 control-label" for=
-            "Address">Address:</label>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="Address">Address:</label>
 
-            <div class="col-md-8">
-              
-               <textarea class="form-control input-sm" id="Address" name="Address" placeholder=
-                  "Address" type="text"  required  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off"><?php echo $res->Address; ?></textarea>
-            </div>
-          </div>
-        </div> 
+      <div class="col-md-8">
 
-        <div class="form-group">
-          <div class="row">
-            <label class="col-md-2 control-label" for=
-            "Gender">Sex:</label>
+        <textarea class="form-control input-sm" id="Address" name="Address" placeholder="Address" type="text" required onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off"><?php echo $res->Address; ?></textarea>
+      </div>
+    </div>
+  </div>
 
-            <div class="col-md-8 row">
-               <div class="col-lg-5">
-                  <div class="radio">
-                    <label><input checked id="optionsRadios1" checked="True" name="optionsRadios" type="radio" value="Female">Female</label>
-                  </div>
-                </div>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="Gender">Sex:</label>
 
-                <div class="col-lg-4">
-                  <div class="radio">
-                    <label><input id="optionsRadios2"   name="optionsRadios" type="radio" value="Male"> Male</label>
-                  </div>
-                </div> 
-               
-            </div>
+      <div class="col-md-8 row">
+        <div class="col-lg-5">
+          <div class="radio">
+            <label><input checked id="optionsRadios1" checked="True" name="optionsRadios" type="radio" value="Female">Female</label>
           </div>
         </div>
 
-             
+        <div class="col-lg-4">
+          <div class="radio">
+            <label><input id="optionsRadios2" name="optionsRadios" type="radio" value="Male"> Male</label>
+          </div>
+        </div>
 
-           <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "ContactNo">Contact No.:</label>
+      </div>
+    </div>
+  </div>
 
-              <div class="col-md-8">
-                
-                 <input class="form-control input-sm" id="ContactNo" name="ContactNo" placeholder=
-                    "Contact No." type="text" any value="<?php echo $res->ContactNo; ?>" required  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
-              </div>
-            </div>
-          </div> 
 
-            
 
-          <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "CourseYear">Course & Year:</label>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="ContactNo">Contact No.:</label>
 
-              <div class="col-md-8">
-                     <input class="form-control input-sm" id="CourseYear" name="CourseYear" placeholder=
-                    "BSIT-1" type="text"  value="<?php echo $res->CourseYear; ?>" required  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
-                <!-- <select class="form-control input-sm" name="CourseYear" id="CourseYear">
+      <div class="col-md-8">
+
+        <input class="form-control input-sm" id="ContactNo" name="ContactNo" placeholder="Contact No." type="text" any value="<?php echo $res->ContactNo; ?>" required onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="CourseYear">Course & Year:</label>
+
+      <div class="col-md-8">
+        <input class="form-control input-sm" id="CourseYear" name="CourseYear" placeholder="BSIT-1" type="text" value="<?php echo $res->CourseYear; ?>" required onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+        <!-- <select class="form-control input-sm" name="CourseYear" id="CourseYear">
                     <option value="none" >Select</option> 
                 </select>  -->
-              </div>
-            </div>
-          </div>
+      </div>
+    </div>
+  </div>
 
-          <div class="form-group">
-            <div class="row">
-              <label class="col-md-2 control-label" for=
-              "BUsername">Username:</label>
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="BUsername">Username:</label>
 
-              <div class="col-md-8">
-                
-                 <input class="form-control input-sm" id="BUsername" name="BUsername" placeholder=
-                    "Username" type="text" any value="<?php echo $res->BUsername;?>" required  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
-              </div>
-            </div>
-          </div> 
+      <div class="col-md-8">
 
-          <div class="form-group">
-            <div class="row"> 
-               <label class="col-md-2 control-label" for=
-              "BUsername"></label>
-              <div class="col-md-8">
-               <button class="btn btn-primary btn-md" name="save" type="submit" ><span class="fa fa-save fw-fa"></span>  Save</button>  
-               </div>
-            </div>
-          </div> 
+        <input class="form-control input-sm" id="BUsername" name="BUsername" placeholder="Username" type="text" any value="<?php echo $res->BUsername; ?>" required onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="BUsername">Total Fine:</label>
+      <div class="col-md-8">
+        <label class="form-control input-sm" style=" border-color: transparent; color: #000; box-shadow: none; font-size: 15px; "><?php echo 'Rs.' . number_format($totalFine, 2); ?></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <label class="col-md-2 control-label" for="BUsername"></label>
+      <div class="col-md-8">
+        <button class="btn btn-primary btn-md" name="save" type="submit"><span class="fa fa-save fw-fa"></span> Save</button>
+      </div>
+    </div>
+  </div>
 </form>
