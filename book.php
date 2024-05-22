@@ -70,7 +70,7 @@ $maxrow = $mydb->num_rows($cur);
                         <span class="review_wrap">
                             <?php
                             echo $star_rating;
-                            echo ($count_reviews > 0) ? '<span class="review_info">(' . $average_review . ' / 5 )</span>' : '<span class="review_info">No review yet</span>';
+                            echo ($count_reviews > 0) ? '<span class="review_info">(' . $count_reviews/5 . ' Reviews)</span>' : '<span class="review_info">No review yet</span>';
                             ?>
 
                         </span>
