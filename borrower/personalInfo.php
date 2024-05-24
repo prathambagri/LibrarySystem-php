@@ -136,7 +136,7 @@ foreach ($cur as $obj) {
       <label class="col-md-2 control-label" for="BUsername">Total Fine:</label>
       <div class="col-md-8" style="display:inline-flex;align-items:center;gap: 20px;">
         <label class="form-control input-sm" style="width:fit-content; border-color: transparent; color: #000; box-shadow: none; font-size: 15px; "><?php echo 'Rs.' . number_format($totalFine, 2); ?></label>
-        <button type="button" class="btn btn-sm btn-info">Pay</button>
+        <button type="button" class="btn btn-sm btn-info" onclick="alert('Please contact the Fines Department for paying fines related to overdue library books.')">Pay</button>
       </div>
     </div>
   </div>
