@@ -191,7 +191,7 @@
         WHERE Status = 'Available' AND ( Category LIKE '%{$category}%' OR  Author LIKE '%{$author}%' )");
       $r = $mydb->executeQuery();
       $maxrow_r = $mydb->num_rows($r);
-      if ($maxrow_r > 0) {
+      if ($maxrow_r > 0 && $maxrow <= 0) {
       ?>
         <div class="row" style="margin-top:70px;">
           <div class="searchagain">Not Found? We recommend...</div>
