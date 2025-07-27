@@ -132,6 +132,9 @@
 				echo '<td>' . $result->DueDate . '</td>';
 				echo '<td>' . $result->Status . '</td>';
 				echo '<td> Rs.' . number_format($fine, 2) . '</td>';
+				if ($result->Status == 'Cancelled' ||  $result->Status == 'Pending') {
+					echo '<td>You can not Rate.</td>';
+				} else {
 				echo '<td> <div class="star-rating" data-id="' . $result->TransactionID . '" data-review="' . $result->review . '">
                     <span class="star" data-value="1">&#9733;</span>
                     <span class="star" data-value="2">&#9733;</span>
@@ -140,6 +143,7 @@
                     <span class="star" data-value="5">&#9733;</span>
                 	</div>
               	</td>';
+				}
 				echo '</tr>';
 			}
 		}
